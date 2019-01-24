@@ -5,6 +5,7 @@ import Square2 from './Square2'
 import './squareRoot.css';
 import ColorInput from './ColorInput';
 import LengthInput from './LengthInput';
+import SquareInput from './SquareInput';
 
 class SquareRoot extends Component {
   constructor(props){
@@ -52,12 +53,21 @@ class SquareRoot extends Component {
     console.log(length)
   }
 
+  setCurrentSquare(e) {
+    const currentSquare = e.target.value;
+    this.setState({
+      currentSquare: Number(currentSquare)
+    })
+  }
+
   render() {
     return (
       <div>
         <ColorInput handleChange={(e) => this.setColor(e)}/>
         <LengthInput handleChange={(e) => this.setLength(e)}/>
+        <SquareInput handleChange={(e) => this.setCurrentSquare(e)}/>
         <Square1 attributes={this.state}/>
+        <Square2 attributes={this.state}/>
       </div>
     );
   }
