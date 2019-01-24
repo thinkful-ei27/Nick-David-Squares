@@ -46,17 +46,15 @@ class SquareRoot extends Component {
 
 
   setLength(e){
-    const length = e.target.value + 'px';
-    if(this.state.currentSquare === 1){
-      this.setState({
-        length1: length
-      })
-    } else if(this.state.currentSquare === 2) {
-        this.setState({
-          length2: length
-        })
-    }
-    console.log(`setLength ran, length is ${length}`)
+    const newLength = e.target.value + 'px';
+    let newArray = this.state.squares.map( (square, index) => {
+      if (this.state.currentIndex === index) {
+        square.length = newLength
+      }
+      return square
+    })
+    this.setState({squares: newArray})
+    console.log(`setLength ran, length is ${newLength}`)
   }
 
   setCurrentIndex(e) {
