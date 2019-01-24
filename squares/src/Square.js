@@ -6,8 +6,8 @@ export default function Square(props){
 
 
     return (
-        <div className='square' style={{backgroundColor: "#00B1E1"}}>
-            <span>Square</span>
+        <div className='square' style={{backgroundColor: "blue"}}>
+            <span></span>
         </div>
     )
 } 
