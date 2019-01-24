@@ -1,4 +1,5 @@
 import React from 'react'
+import './colorinput.css'
 
 export default function Input(props) {
     return (
