@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Square from './Squares';
 import './squareRoot.css';
-import ColorInput from './ColorInput';
-import LengthInput from './LengthInput';
-import SquareInput from './SquareInput';
+import Form from './Form';
 
 class SquareRoot extends Component {
   constructor(props){
@@ -21,7 +19,7 @@ class SquareRoot extends Component {
         color: "red",
         length: "400px"
       }],
-      currentIndex: 0
+      currentIndex: 1
 }
   }
 
@@ -33,18 +31,18 @@ class SquareRoot extends Component {
 
   setColor(e){
     if(this.validateColor(e.target.value)){
-    const color = e.target.value;
-    if(this.state.currentSquare === 1){
-      this.setState({
-        color1: color
+      const newColor = e.target.value;;
+      let newArray = this.state.squares.map( (square, index) => {
+        if (this.state.currentIndex === index) {
+          square.color = newColor
+        }
+        return square
       })
-    } else if(this.state.currentSquare === 2) {
-        this.setState({
-          color2: color
-        })
-    }
-    console.log(color)}
+      this.setState({squares: newArray})
+      console.log(this.state.squares[this.state.currentIndex].color)
+    } 
   }
+  
 
 
   setLength(e){
@@ -71,13 +69,24 @@ class SquareRoot extends Component {
   render() {
     return (
       <div>
-        <ColorInput handleChange={(e) => this.setColor(e)}/>
-        <LengthInput handleChange={(e) => this.setLength(e)}/>
-        <SquareInput handleChange={(e) => this.setCurrentSquare(e)}/>
-        <Square attributes={this.state}/>
+      <Form setColor={(e) => {
+        this.setColor(e)
+      }}
+      setLength={(e) => {
+        this.setLength(e)
+      }}
+      setCurrentSquare={(e) => {
+        this.setCurrentSquare(e)
+      }}/>
+      
+      <Square attributes={this.state.squares}/> 
       </div>
     );
   }
 }
+{/* <ColorInput handleChange={(e) => this.setColor(e)}/>
+<LengthInput handleChange={(e) => this.setLength(e)}/>
+<SquareInput handleChange={(e) => this.setCurrentSquare(e)}/>
+<Square attributes={this.state}/> */}
 
 export default SquareRoot;

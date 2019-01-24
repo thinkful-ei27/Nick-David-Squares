@@ -2,7 +2,8 @@ import React from 'react';
 
 
 export default function Square(props){
-    const squaresArray = props.attributes.squares.map((square, index) => {
+    console.log(props)
+    const squaresArray = props.attributes.map((square, index) => {
         return (
             <div className='square' key={index} style={{backgroundColor: square.color, height: square.length, width: square.length}}>
                 <span>{index}</span>
