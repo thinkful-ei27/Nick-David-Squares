@@ -56,14 +56,15 @@ class SquareRoot extends Component {
           length2: length
         })
     }
-    console.log(length)
+    console.log(`setLength ran, length is ${length}`)
   }
 
-  setCurrentSquare(e) {
-    const currentSquare = e.target.value;
+  setCurrentIndex(e) {
+    const currentIndex = e.target.value;
     this.setState({
-      currentSquare: Number(currentSquare)
+      currentIndex: Number(currentIndex)
     })
+    console.log(`setCurrentIndex ran. CurrentIndex is ${currentIndex}`)
   }
 
   render() {
@@ -75,9 +76,10 @@ class SquareRoot extends Component {
       setLength={(e) => {
         this.setLength(e)
       }}
-      setCurrentSquare={(e) => {
-        this.setCurrentSquare(e)
-      }}/>
+      setCurrentIndex={(e) => {
+        this.setCurrentIndex(e)
+      }}
+      attributes={this.state.squares}/>
       
       <Square attributes={this.state.squares}/> 
       </div>
